@@ -1,0 +1,167 @@
+/* Font e tema di base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #181818;
+    color: #f0f0f0;
+}
+
+/* Container principale per centrare tutto */
+/* Container principale per centrare tutto */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: url('statistics.jpeg') no-repeat center center; /* Aggiunge l'immagine di sfondo */
+    background-size: cover; /* Assicura che l'immagine copra tutto il container */
+    background-attachment: fixed; /* Fa sì che l'immagine rimanga ferma mentre si scorre */
+    border-radius: 15px; /* Aggiunge un tocco di modernità con bordi arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Aggiunge un'ombra intorno al container */
+}
+
+/* Stile per l'header */
+.hero {
+    position: relative;
+    background: url('https://your-image-link.jpg') no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    border-bottom: 4px solid #ff6b6b;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    z-index: 1;
+}
+
+h1 {
+    z-index: 1;
+    font-size: 48px;
+    margin: 0;
+}
+
+.subtitle {
+    z-index: 1;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Sezione informazioni studente */
+.student-section {
+    margin: 50px 0;
+}
+
+.container-card {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.student-photo {
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* Sezione Homework */
+.homework-section {
+    padding: 50px 20px;
+    background-color: #202020;
+    border-top: 4px solid #ff6b6b;
+}
+
+.section-title {
+    text-align: center;
+    color: #ff6b6b;
+    font-size: 36px;
+}
+
+.homework-container {
+    margin-top: 30px;
+}
+
+.homework-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.homework-card {
+    background-color: #292929;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.homework-card:hover {
+    transform: translateY(-10px);
+}
+
+.homework-image {
+    border-radius: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+h3 {
+    margin: 15px 0;
+    color: #f0f0f0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    background-color: #ff6b6b;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.btn:hover {
+    background-color: transparent;
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+}
+
+.practice {
+    background-color: #4caf50;
+}
+
+.practice:hover {
+    color: #4caf50;
+    border-color: #4caf50;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #181818;
+    color: #888;
+    margin-top: 50px;
+}
