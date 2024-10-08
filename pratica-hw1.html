@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack Simulation Overview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+        }
+
+        .container-custom {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row-custom {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            color: white;
+            margin: 10px;
+            width: 100%;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #444;
+            color: #eee;
+            overflow-x: auto;
+        }
+
+        /* Button styles */
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Zoomable image styles */
+        .zoomable {
+            transition: transform 0.3s;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.8);
+        }
+
+        /* Custom text styles with arrow */
+        .custom-text {
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .custom-text i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-text:hover {
+            color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-text:hover i {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-custom">
+        <h1>Overview of Attack Simulation Code</h1>
+
+        <!-- First row: Code sections in cards -->
+        <div class="row row-custom">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">1. Initial Setup</h5>
+                        <p>Configures the initial parameters for the simulation and sets up the user interface.</p>
+                        <button class="btn custom-btn" onclick="showCode('code1')">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">2. Simulating Attack</h5>
+                        <p>Simulates multiple attackers attempting to penetrate servers and records results in a step-line chart.</p>
+                        <button class="btn custom-btn" onclick="showCode('code2')">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">3. Penetration Distribution</h5>
+                        <p>Builds a column chart representing the distribution of penetrations among attackers.</p>
+                        <button class="btn custom-btn" onclick="showCode('code3')">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">4. Penetration Calculation</h5>
+                        <p>Counts and visualizes how many times a certain number of penetrations was reached.</p>
+                        <button class="btn custom-btn" onclick="showCode('code4')">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second row: Adding new card for recursive mean calculation -->
+        <div class="row row-custom">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">5. Recursive Mean Calculation</h5>
+                        <p>Calculates the mean of server penetrations for m attackers by  using the recursive formula.</p>
+                        <button class="btn custom-btn" onclick="showCode('code5')">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second row: Text and image -->
+<div class="row row-custom">
+    <div class="col-md-6 d-flex align-items-center">
+        <span class="custom-text" data-toggle="modal" data-target="#chartModal">
+            <i class="fas fa-arrow-right"></i> <strong>View Chart for 10 Attackers</strong>
+        </span>
+    </div>
+    <div class="col-md-6 text-center">
+        <img src="image.jpeg" alt="Chart for 20 Attackers" class="img-fluid zoomable" id="chartImage" style="cursor: zoom-in;">
+    </div>
+</div>
+
+
+    <!-- Modal for displaying code -->
+    <div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="codeModalLabel">Code Snippet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <pre id="modalCode"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for displaying chart -->
+    <!-- Second row: Text and image -->
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const codeSnippets = {
+            code1: `int numberOfServers = 20; // Number of servers
+int numberOfAttackers = 10; // Number of attackers
+double penetrationProbability = 0.7; // Probability of successful penetration
+
+// Create a TableLayoutPanel to hold both charts
+TableLayoutPanel tableLayoutPanel = new TableLayoutPanel();
+tableLayoutPanel.Dock = DockStyle.Fill;
+tableLayoutPanel.RowCount = 2;
+tableLayoutPanel.ColumnCount = 1;
+tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F)); // First chart takes 50% of the height
+tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F)); // Second chart takes 50% of the height
+this.Controls.Add(tableLayoutPanel);,`,
+            code2: `Random randomGenerator = new Random();
+int[] finalPenetrations = new int[numberOfAttackers];
+
+for (int attackerIndex = 0; attackerIndex < numberOfAttackers; attackerIndex++)
+{
+    Series attackerSeries = new Series("Attacker " + (attackerIndex + 1));
+    attackerSeries.ChartType = SeriesChartType.StepLine;
+    attackerSeries.BorderWidth = 2;
+    attackerSeries.Color = attackerColors[attackerIndex % attackerColors.Length];
+
+    int currentPenetrationCount = 0;
+
+    for (int serverIndex = 1; serverIndex <= numberOfServers; serverIndex++)
+    {
+        if (randomGenerator.NextDouble() < penetrationProbability)
+        {
+            currentPenetrationCount++;
+        }
+        attackerSeries.Points.AddXY(serverIndex, currentPenetrationCount);
+    }
+
+    finalPenetrations[attackerIndex] = currentPenetrationCount;
+    attackTrajectoryChart.Series.Add(attackerSeries);
+}
+
+attackTrajectoryChart.Titles.Add("Attack Trajectories on Servers");,
+`,
+            code3: `Chart penetrationDistributionChart = new Chart();
+penetrationDistributionChart.Dock = DockStyle.Fill;
+tableLayoutPanel.Controls.Add(penetrationDistributionChart, 0, 1);
+
+// Create a chart area for the second chart
+ChartArea chartArea2 = new ChartArea();
+chartArea2.AxisX.Title = "Penetrations";
+chartArea2.AxisY.Interval = 1;
+chartArea2.AxisY.Title = "Number of Attackers";
+penetrationDistributionChart.ChartAreas.Add(chartArea2);
+
+Dictionary<int, int> penetrationDistribution = new Dictionary<int, int>();
+
+// Count the penetration distribution
+foreach (int penetrationCount in finalPenetrations)
+{
+    if (penetrationDistribution.ContainsKey(penetrationCount))
+    {
+        penetrationDistribution[penetrationCount]++;
+    }
+    else
+    {
+        penetrationDistribution[penetrationCount] = 1;
+    }
+}
+
+Series distributionSeries = new Series("Penetration Distribution");
+distributionSeries.ChartType = SeriesChartType.Column;
+
+// Add data points to the second chart
+foreach (var entry in penetrationDistribution)
+{
+    distributionSeries.Points.AddXY(entry.Key, entry.Value);
+}
+
+penetrationDistributionChart.Series.Add(distributionSeries);
+penetrationDistributionChart.Titles.Add("Distribution of Attackers' Penetrations");,`,
+            code4: `Dictionary<int, int> penetrationDistribution = new Dictionary<int, int>();
+
+foreach (int penetrationCount in finalPenetrations)
+{
+    if (penetrationDistribution.ContainsKey(penetrationCount))
+    {
+        penetrationDistribution[penetrationCount]++;
+    }
+    else
+    {
+        penetrationDistribution[penetrationCount] = 1;
+    }
+}
+
+Series distributionSeries = new Series("Penetration Distribution");
+distributionSeries.ChartType = SeriesChartType.Column;
+
+foreach (var entry in penetrationDistribution)
+{
+    distributionSeries.Points.AddXY(entry.Key, entry.Value);
+}
+        };`,
+        code5: `private double CalculateMean(int[] penetrations, int count, int index, double currentMean)
+{
+    if (index >= count)
+    {
+        return currentMean; // Return mean when we reach the end
+    }
+
+    // Update the mean based on the current penetration value
+    currentMean = currentMean + (penetrations[index] - currentMean) / (index + 1);
+
+    // Recur for the next index
+    return CalculateMean(penetrations, count, index + 1, currentMean);
+}`
+        };
+
+        function showCode(codeKey) {
+            document.getElementById('modalCode').textContent = codeSnippets[codeKey];
+            $('#codeModal').modal('show');
+        }
+    </script>
+</body>
+</html>
