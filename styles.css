@@ -20,6 +20,33 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Aggiunge un'ombra intorno al container */
 }
 
+
+header.hero {
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay to darken the image */
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 /* Stile per l'header */
 .hero {
     position: relative;
