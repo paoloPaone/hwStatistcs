@@ -69,7 +69,7 @@
     <h1>Statistical Averages & Computational Problems</h1>
 
     <!-- Section 1: Basic Notions in Statistics -->
-    <h2 class="section-title">Basic Notions in Statistics</h2>
+    <h2 class="section-title">1. Basic Notions in Statistics</h2>
     <p class="paragraph">
         In statistics, several fundamental concepts form the basis for analysis and interpretation of data. These include:
     </p>
@@ -84,6 +84,18 @@
         <li><strong>Binomial Distribution:</strong> Describes the number of successes in a fixed number of independent experiments, each with the same probability of success.</li>
         <li><strong>Poisson Distribution:</strong> Describes the probability of a given number of events occurring within a fixed interval of time or space.</li>
     </ul>
+
+    <!-- Subsection 1.2: Frequency -->
+    <h3><strong>Frequency</strong></h3>
+    <p>
+        <em>Frequency</em> in statistics refers to the number of times a particular value or range of values occurs in a dataset. It is an essential concept for understanding how data is distributed:
+    </p>
+<ul>
+    <li><strong>Absolute Frequency:</strong> The total count of occurrences of a specific value or category in a dataset.</li>
+    <li><strong>Relative Frequency:</strong> The ratio of the absolute frequency to the total number of observations, often expressed as a percentage.</li>
+    <li><strong>Cumulative Frequency:</strong> The sum of the frequencies for all values less than or equal to a given value in the dataset.</li>
+</ul>
+
 
     <!-- Subsection 1.2: Variables -->
     <h3><strong>Variables</strong></h3>
@@ -137,6 +149,28 @@
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Subsection: Derivation -->
+<div class="container container-custom">
+    <h2 class="section-title">Derivation</h2>
+    <p class="paragraph">
+<p>
+    <em>Derivation</em> refers to the difference between each individual data point and the average (usually the mean) of the dataset. It is used to measure the dispersion or spread of the data:
+</p>
+<ul>
+    <li><strong>Deviations:</strong> The deviation of a data point \( x_i \) from the mean \( \bar{x} \) is calculated as \( x_i - \bar{x} \).</li>
+    <li><strong>Variance:</strong> The average of the squared deviations, providing a measure of the spread of the data. The formula for variance is:
+        <br><br>
+        <span class="math-formula">$$\text{Variance} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2$$</span>
+        <br><br>
+    </li>
+    <li><strong>Standard Deviation:</strong> The square root of the variance, providing a measure of the typical deviation from the mean. It is expressed as:
+        <br><br>
+        <span class="math-formula">$$\sigma = \sqrt{\text{Variance}}$$</span>
+        <br><br>
+    </li>
+</ul>
+
 
         <!-- Section 3: Computational Problems -->
         <div class="container container-custom">
