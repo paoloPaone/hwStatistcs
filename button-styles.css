@@ -1,0 +1,24 @@
+/* button-styles.css */
+.btn-home {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: 2px solid transparent;
+    border-radius: 25px;
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    text-decoration: none;
+    transition: background-color 0.3s, border 0.3s;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.btn-home:hover {
+    background-color: transparent; /* Make the background transparent on hover */
+    border: 2px solid #007bff; /* Blue border on hover */
+    color: #007bff; /* Change text color to blue on hover */
+}
+
+.btn-home i {
+    margin-right: 8px; /* Add some space between icon and text */
+}
