@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack Simulation Overview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7t06XkFQkE0K6KhNhT1lhuEjQBlLcm3B+R6G" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 20px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #444;
+            color: #eee;
+            overflow-x: auto;
+            display: block; 
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .custom-text {
+            color: #007bff;
+            font-size: 20px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+        }
+
+        .container-custom {
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            color: white;
+            margin: 10px 0;
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Button styles */
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            margin-top: 10px;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Zoomable image styles */
+        .zoomable {
+            transition: transform 0.2s;
+        }
+
+        .zoomable:hover {
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function() {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+</div>
+
+
+<div class="container container-custom">
+    <h1 class="text-center">Overview of Attack Simulation Code</h1>
+
+    <!-- Second row: Code sections in cards -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Distribution Chart Code</h5>
+                    <p>This code snippet demonstrates how the distribution of attackers fluctuates over a specified time parameter, with <b>t=12</b> used as an illustrative example. The algorithm evaluates the success rate of each attacker and visualizes the results using two histogram charts.</p>    
+                    <button class="btn custom-btn" onclick="showCode('code1')">
+                        <i class="fas fa-code"></i> Show Code
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Relative Frequencies Code</h5>
+                    <p>This code calculates both the absolute and relative frequencies of successful penetrations. The absolute frequency counts the total successful attacks per server, while the relative frequency represents these successes as a percentage of total attacks.</p>
+                    <button class="btn custom-btn" onclick="showCode('code2')">
+                        <i class="fas fa-code"></i> Show Code
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third row: Distribution Chart and Frequency Chart -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Distribution Chart for t=12</h5>
+                    <img src="distribution.png" alt="Distribution Chart for t=12" class="img-fluid zoomable" style="max-width: 80%; height: auto;">
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Frequency Chart</h5>
+                    <img src="freq.png" alt="Frequency Chart" class="img-fluid zoomable" style="max-width: 80%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New section for the complete chart -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Complete Attack Simulation Chart</h5>
+                    <img src="imagechart.png" alt="Complete Attack Simulation Chart" class="img-fluid zoomable" style="max-width: 80%; height: auto;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for displaying code -->
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="codeModalLabel">Code Snippet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <pre id="modalCode"></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    const codeSnippets = {
+        code1: `int t = rand.Next(0, numServers); // Generate a random value of t
+var barSeriesRandomT = new BarSeries
+{
+    Title = $"Distribution with t = {t}",
+    FillColor = OxyColor.FromRgb(255, 99, 71) // Different color for the histogram (e.g., red)
+};
+
+// Get attacker positions at time step t
+var positionsAtT = attackerTrajectories.Select(x => x.Value[t]).ToList();
+
+// Filter the positions for the value of t
+var filteredDistribution = positionsAtT
+    .GroupBy(x => x) // Group by x at the position of t
+    .OrderBy(g => g.Key)
+    .Select(g => new { Penetrations = g.Key, Count = g.Count() })
+    .ToList();
+
+// Add categories to the bar series
+foreach (var penetration in filteredDistribution)
+{
+    barSeriesRandomT.Items.Add(new BarItem { CategoryIndex = penetration.Penetrations, Value = penetration.Count });
+}
+
+// Plotting
+var distributionPlotModel = new PlotModel { Title = $"Distribution Chart for t = {t}" };
+distributionPlotModel.Series.Add(barSeriesRandomT);
+distributionPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = 0, Maximum = numServers, Title = "Server" });
+distributionPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Title = "Frequency" });`,
+        code2: `var frequencyPlotModel = new PlotModel { Title = "Frequency Distribution" };
+
+// Absolute frequency
+var absoluteFrequencySeries = new LineSeries { Title = "Absolute Frequency", Color = OxyColors.Blue };
+for (int server = 0; server < numServers; server++)
+{
+    absoluteFrequencySeries.Points.Add(new DataPoint(server, penetrationCounts[server]));
+}
+
+// Relative frequency
+double totalAttacks = numAttackers;
+var relativeFrequencySeries = new LineSeries { Title = "Relative Frequency", Color = OxyColors.Green };
+for (int server = 0; server < numServers; server++)
+{
+    double relativeFrequency = penetrationCounts[server] / totalAttacks;
+    relativeFrequencySeries.Points.Add(new DataPoint(server, relativeFrequency));
+}
+
+// Add both series to the plot
+frequencyPlotModel.Series.Add(absoluteFrequencySeries);
+frequencyPlotModel.Series.Add(relativeFrequencySeries);`
+    };
+
+    function showCode(codeKey) {
+        document.getElementById('modalCode').textContent = codeSnippets[codeKey];
+        $('#codeModal').modal('show');
+    }
+</script>
+</body>
+</html>
