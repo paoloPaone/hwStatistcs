@@ -154,18 +154,36 @@ double timeStep = 1.0 / timeIntervals;   // Time step size
 double totalTime = timeIntervals * timeStep; // Total reference period
 int[] finalPenetrations = new int[attackersCount];
 
-// Simulate penetration attempts
-for (int i = 0; i < attackersCount; i++) {
-    Series series = new Series("Attacker " + (i + 1)) { /* Series configuration */ };
-    int currentPenetration = 0;
+Random rand = new Random();
 
-    for (int step = 0; step <= timeIntervals; step++) {
-        if (rand.NextDouble() < attackRate * timeStep) {
-            currentPenetration++;
-        }
-        series.Points.AddXY(step * timeStep, currentPenetration);
-    }
-}`,
+            // Add series for each attacker
+            for (int i = 0; i < attackersCount; i++)
+            {
+                Series series = new Series("Attacker " + (i + 1))
+                {
+                    ChartType = SeriesChartType.StepLine,
+                    BorderWidth = 3,
+                    Color = colors[i % colors.Length]
+                };
+
+                int currentPenetration = 0;
+
+                // Simulate penetration attempts over time
+                for (int step = 0; step <= timeIntervals; step++)
+                {
+                    double time = step * timeStep;
+                    if (rand.NextDouble() < attackRate * timeStep)
+                    {
+                        currentPenetration++;
+                    }
+
+                    series.Points.AddXY(time, currentPenetration);
+                }
+
+                finalPenetrations[i] = currentPenetration;
+                chart1.Series.Add(series);
+            }
+`,
                 // Add more code snippets as needed
             };
 
