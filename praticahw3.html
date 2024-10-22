@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attack Simulation Overview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7t06XkFQkE0K6KhNhT1lhuEjQBlLcm3B+R6G" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 19px;
+        }
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #444;
+            color: #eee;
+            overflow-x: auto;
+            display: block; 
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .container-custom {
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            color: white;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function() {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+</div>
+
+        <h1 class="text-center">Overview of Attack Simulation Code</h1>
+
+        <div class="container-custom text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card mx-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Continuous Attack Simulator Implementation</h5>
+                    <p>
+                        The SDE simulator has been updated to facilitate attacks at any point within the reference period. The simulation timeframe is divided into 1000 time intervals, with each interval denoted as <b>dt = 1/n</b> to achieve temporal continuity. The attack probability, represented by a +1 increment in each interval, is computed as <code>attackRate * timeStep</code>, where <code>attackRate</code> represents the expected attack frequency (Lambda). Each attacker simulates penetration attempts, which are deemed successful if a randomly generated number falls below the calculated probability, allowing for the tracking of penetration trends over time.
+                    </p>
+                    <div class="image-container">
+                        <img src="chart-continuos.png" alt="Attack Simulation Illustration" class="img-fluid">
+                    </div>
+                    <button class="btn custom-btn" onclick="showCode('code1')">
+                        <i class="fas fa-code"></i> Show Code
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+        <!-- Modal for displaying code -->
+<div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="codeModalLabel">Code Snippet</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <pre id="modalCode"></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            const codeSnippets = {
+                code1: `int attackersCount = 15; // Number of attackers
+double attackRate = 0;  // Expected total number of attacks
+int timeIntervals = 1000; // Number of time intervals
+double timeStep = 1.0 / timeIntervals;   // Time step size
+double totalTime = timeIntervals * timeStep; // Total reference period
+int[] finalPenetrations = new int[attackersCount];
+
+// Simulate penetration attempts
+for (int i = 0; i < attackersCount; i++) {
+    Series series = new Series("Attacker " + (i + 1)) { /* Series configuration */ };
+    int currentPenetration = 0;
+
+    for (int step = 0; step <= timeIntervals; step++) {
+        if (rand.NextDouble() < attackRate * timeStep) {
+            currentPenetration++;
+        }
+        series.Points.AddXY(step * timeStep, currentPenetration);
+    }
+}`,
+                // Add more code snippets as needed
+            };
+
+            function showCode(codeKey) {
+                document.getElementById('modalCode').textContent = codeSnippets[codeKey];
+                $('#codeModal').modal('show');
+            }
+
+            document.getElementById('backHomeBtn').addEventListener('click', function () {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+    </div>
+</body>
+
+</html>
