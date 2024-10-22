@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Median and Location Statistics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7t06XkFQkE0K6KhNhT1lhuEjQBlLcm3B+R6G" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-text {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .home-btn:hover {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+
+        .home-btn i {
+            margin-right: 0;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function () {
+                window.location.href = 'index.html';
+            });
+        </script>
+    </div>
+
+    <div class="container container-custom">
+        <h1 style="text-align: center;"> The Median and Location Statistics</h1>
+        <!-- Section 1: Why the Median Minimizes the Sum of Absolute Deviations -->
+        <h2 class="section-title">1. Why the Median Minimizes the Sum of Absolute Deviations</h2>
+        <!-- Section 1: Why the Median Minimizes the Sum of Absolute Deviations -->
+        
+        <p class="paragraph">
+            The goal is to show that the median minimizes the sum of absolute deviations, which is expressed as:
+        </p>
+        <div class="math-formula">
+            $$S(c) = \sum_{i=1}^{n} |x_i - c|$$
+        </div>
+        <p class="paragraph">
+            Here, \(x_i\) are the data points, and \(c\) is the candidate "center" we are trying to optimize.
+        </p>
+
+        <!-- Proof -->
+        <h3 class="section-title">Proof</h3>
+        <p class="paragraph">
+            <strong> Ordered Data:</strong> Assume the data points are ordered as \(x_1 \leq x_2 \leq \dots \leq x_n\).
+        </p>
+        <p class="paragraph">
+            <strong>Behavior of Absolute Deviation:</strong> For each \(c\), the sum \(S(c)\) measures the total distance between \(c\) and all data points. The median splits the dataset such that the number of points on its left and right are balanced. This balance is key to minimizing the total distance.
+        </p>
+        <p class="paragraph">
+            <strong>Minimization at the Median:</strong> If \(c\) is the median \(M\), then:
+        </p>
+        <ul>
+            <li>Half of the points lie to the left of \(M\), and half lie to the right.</li>
+            <li>If \(c\) is shifted either to the left or right of \(M\), the distances to the data points on the other side increase, making \(S(c)\) larger.</li>
+        </ul>
+        <p class="paragraph">
+            <strong>Conclusion:</strong> Therefore, \(S(c)\) is minimized when \(c = M\), the median. Mathematically, the median is the value of \(c\) that minimizes the sum of absolute deviations.
+        </p>
+
+        <!-- Section 2: Different Definitions of Location Statistics -->
+        <h2 class="section-title">Location Statistics – Different Definitions</h2>
+        <p class="paragraph">
+            There are several ways to define a central tendency or "location" statistic. Here are some key examples:
+        </p>
+
+        <!-- Subsection: Arithmetic Mean -->
+        <h3 class="section-title">Arithmetic Mean (Average)</h3>
+        <p class="paragraph">
+            The arithmetic mean is the sum of all data points divided by the number of points:
+        </p>
+        <div class="math-formula">
+            $$\mu = \frac{1}{n} \sum_{i=1}^{n} x_i$$
+        </div>
+        <p class="paragraph">
+            It minimizes the sum of squared deviations from the data points but is sensitive to outliers.
+        </p>
+
+        <!-- Subsection: Median -->
+        <h3 class="section-title">Median</h3>
+        <p class="paragraph">
+            The median is the middle value that minimizes the sum of absolute deviations, which makes it robust against outliers:
+        </p>
+        <div class="math-formula">
+            $$\text{Median} = \min \sum_{i=1}^{n} |x_i - c|$$
+        </div>
+
+        <!-- Subsection: Trimmed Mean -->
+        <h3 class="section-title">Trimmed Mean</h3>
+        <p class="paragraph">
+            The trimmed mean excludes extreme values by removing a certain percentage of the smallest and largest data points. This reduces sensitivity to outliers compared to the arithmetic mean.
+        </p>
+
+        <!-- Subsection: Geometric Mean -->
+        <h3 class="section-title">Geometric Mean</h3>
+        <p class="paragraph">
+            The geometric mean is calculated by multiplying all data points and then taking the nth root:
+        </p>
+        <div class="math-formula">
+            $$\mu_g = \left( \prod_{i=1}^{n} x_i \right)^{\frac{1}{n}}$$
+        </div>
+        <p class="paragraph">
+            It is particularly useful for datasets involving ratios or growth rates and emphasizes smaller values.
+        </p>
+
+        <!-- Subsection: Harmonic Mean -->
+        <h3 class="section-title">Harmonic Mean</h3>
+        <p class="paragraph">
+            The harmonic mean is useful for datasets involving rates and is calculated as:
+        </p>
+        <div class="math-formula">
+            $$\mu_h = \frac{n}{\sum_{i=1}^{n} \frac{1}{x_i}}$$
+        </div>
+        <p class="paragraph">
+            It emphasizes the smallest values in the dataset, making it suitable for averaging rates, like speeds.
+        </p>
+
+        <!-- Subsection: Location in Metric Spaces -->
+        <h3 class="section-title">Location in Metric Spaces</h3>
+        <p class="paragraph">
+            In higher-dimensional or non-Euclidean spaces, the concept of a "center" can be generalized using notions such as the centroid (geometric center) or Fermat point, which minimizes the total distance in a triangle. These advanced location statistics extend the idea of central tendency to more complex geometries.
+        </p>
+    </div>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
