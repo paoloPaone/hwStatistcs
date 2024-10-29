@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept of Statistical Independence</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7t06XkFQkE0K6KhNhT1lhuEjQBlLcm3B+R6G" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function () {
+                window.location.href = 'index.html';
+            });
+        </script>
+    </div>
+
+    <div class="container container-custom">
+        <h1 style="text-align: center;">Statistical Independence</h1>
+
+        <!-- Section 1: Concept of Statistical Independence -->
+        <h2 class="section-title">Concept of Statistical Independence</h2>
+        <p class="paragraph">
+            Statistical independence refers to the idea that two events, \(A\) and \(B\), do not influence each other’s occurrence. In other words, knowing that event \(A\) has occurred does not provide any information about whether event \(B\) has occurred, and vice versa. This idea of independence is fundamental in statistics and probability because it allows us to simplify the analysis of complex systems where certain events are unrelated.
+        </p>
+
+        <!-- Section 2: Formal Definition in Probability Theory -->
+        <h2 class="section-title">Formal Definition in Probability Theory</h2>
+        <p class="paragraph">
+            In probability theory, two events \(A\) and \(B\) are considered independent if and only if the probability of both events occurring together (their joint probability) is equal to the product of their individual probabilities:
+        </p>
+        <div class="math-formula">
+            $$ P(A \cap B) = P(A) \cdot P(B) $$
+        </div>
+        <p class="paragraph">
+            This formula indicates that the likelihood of both \(A\) and \(B\) occurring together is simply the product of their probabilities, meaning the events have no impact on each other.
+        </p>
+        <p class="paragraph">
+            For instance, if we flip two coins, the outcome of the first flip does not affect the outcome of the second. Therefore, if \(A\) is the event "first coin shows heads" and \(B\) is the event "second coin shows heads," then \( P(A \cap B) = P(A) \cdot P(B) = 0.5 \times 0.5 = 0.25 \).
+        </p>
+
+        <!-- Section 3: Analogies with Probability Theory -->
+        <h2 class="section-title">Analogies with Probability Theory</h2>
+        <p class="paragraph">
+            The concept of independence can extend to more than two events. For multiple events, \( A_1, A_2, \ldots, A_n \), we say that these events are mutually independent if, for every subset of events, the joint probability of that subset is equal to the product of their individual probabilities. Mathematically, this means that for any subset \( S \subseteq \{ A_1, A_2, \ldots, A_n \} \):
+        </p>
+        <div class="math-formula">
+            $$ P\left(\bigcap_{A \in S} A\right) = \prod_{A \in S} P(A) $$
+        </div>
+        <p class="paragraph">
+            This condition is crucial in statistical modeling because it allows for simplifications when working with large datasets or systems, as independent events or variables can be analyzed separately without considering joint distributions.
+        </p>
+
+        <!-- Section 4: Examples and Applications of Independence -->
+<h2 class="section-title">Examples and Applications of Independence</h2>
+<p class="paragraph">
+    Independence is widely used in various fields, influencing both theoretical models and practical applications. In machine learning, for instance, independence assumptions greatly simplify the development and performance of models. One prominent example is the Naive Bayes classifier, which relies on the assumption that features are conditionally independent given the class label. This means that the presence (or absence) of a particular feature does not affect the presence of any other feature, allowing for a straightforward calculation of the posterior probabilities. This simplification not only accelerates the training process but also enhances computational efficiency, making Naive Bayes particularly suitable for large datasets. Despite its simplicity, Naive Bayes often yields surprisingly effective results in text classification, spam detection, and sentiment analysis, even when the independence assumption does not hold perfectly in practice.
+</p>
+
+<p class="paragraph">
+    In the field of finance, the concept of independence is frequently applied to model the behavior of stock returns and asset prices. Financial analysts often assume that stock returns are independent and identically distributed (i.i.d.) over time. This assumption simplifies the analysis of historical data, allowing for the use of various statistical methods to predict future prices and assess risk. For example, portfolio theory employs the notion of independence to optimize asset allocation, with the aim of maximizing returns while minimizing risk through diversification. However, this independence assumption has its limitations; real-world financial markets exhibit dependencies and correlations, especially during periods of market stress or economic downturns. Events such as financial crises can lead to increased correlations among asset returns, which challenges the validity of models based on independence. Thus, while the independence assumption serves as a useful starting point, it is essential for practitioners to recognize the potential for interdependencies among variables and to adjust their models accordingly.
+</p>
+
+<p class="paragraph">
+    Beyond machine learning and finance, the principle of independence finds applications in various domains, including genetics, epidemiology, and social sciences. For instance, in genetics, the independence of alleles in a population can simplify the analysis of inheritance patterns, leading to predictions about genetic variation. In epidemiology, independence assumptions help in modeling the spread of diseases, where the likelihood of transmission between individuals may be considered independent in the absence of interactions. However, similar to finance, these assumptions must be scrutinized, as social behaviors and environmental factors can create dependencies that significantly impact the outcomes of such models.
+</p>
+</div>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
