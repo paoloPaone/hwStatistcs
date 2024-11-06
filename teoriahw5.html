@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independence, Uncorrelation, and Cauchy-Schwarz Inequality</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-text {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .home-btn:hover {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+
+        .home-btn i {
+            margin-right: 0;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <!-- Back to Home Button -->
+    <button id="backHomeBtn" class="btn btn-home">
+        <i class="fas fa-home"></i> Back to Home
+    </button>
+
+    <!-- JavaScript to handle button click -->
+    <script>
+        document.getElementById('backHomeBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+        });
+    </script>
+</div>
+
+<div class="container container-custom">
+    <h1>Independence, Uncorrelation, and Cauchy-Schwarz Inequality</h1>
+
+    <!-- Section 1: Cauchy-Schwarz Inequality -->
+    <h2 class="section-title">Cauchy-Schwarz Inequality</h2>
+    <p class="paragraph">
+        The Cauchy-Schwarz inequality is a fundamental inequality in linear algebra and statistics. It gives an upper bound for the absolute value of the inner product of two vectors in terms of their magnitudes. The inequality is expressed as:
+    </p>
+
+    <div class="math-formula">
+        $$| \langle \mathbf{u}, \mathbf{v} \rangle | \leq \| \mathbf{u} \| \cdot \| \mathbf{v} \|$$
+    </div>
+
+    <p class="paragraph">
+        Here, \( \langle \mathbf{u}, \mathbf{v} \rangle \) is the inner product between vectors \( \mathbf{u} \) and \( \mathbf{v} \), and \( \| \mathbf{u} \| \) and \( \| \mathbf{v} \| \) are their magnitudes (norms).
+    </p>
+
+    <h3 class="section-title">Simple Proof of Cauchy-Schwarz</h3>
+    <p class="paragraph">
+        Consider a linear combination of \( \mathbf{u} \) and \( \mathbf{v} \) with a scalar parameter \( t \):
+    </p>
+    <div class="math-formula">
+        $$ \mathbf{w} = \mathbf{u} - t \mathbf{v} $$
+    </div>
+    <p class="paragraph">
+        Now, compute the square of the norm of \( \mathbf{w} \):
+    </p>
+    <div class="math-formula">
+        $$ \| \mathbf{w} \|^2 = \langle \mathbf{w}, \mathbf{w} \rangle = \langle \mathbf{u} - t \mathbf{v}, \mathbf{u} - t \mathbf{v} \rangle $$
+    </div>
+    <p class="paragraph">
+        Expanding the inner product and simplifying gives the formula:
+    </p>
+    <div class="math-formula">
+        $$ \| \mathbf{w} \|^2 = \| \mathbf{u} \|^2 - 2t \langle \mathbf{u}, \mathbf{v} \rangle + t^2 \| \mathbf{v} \|^2 $$
+    </div>
+    <p class="paragraph">
+        The norm squared must be non-negative, so the quadratic in \( t \) has a minimum value at \( t = \frac{\langle \mathbf{u}, \mathbf{v} \rangle}{\| \mathbf{v} \|^2} \). Substituting this value of \( t \) into the formula, we get the Cauchy-Schwarz inequality:
+    </p>
+    <div class="math-formula">
+        $$ | \langle \mathbf{u}, \mathbf{v} \rangle | \leq \| \mathbf{u} \| \cdot \| \mathbf{v} \| $$
+    </div>
+
+    <!-- Section 2: Independence vs Uncorrelation -->
+    <h2 class="section-title">Independence vs Uncorrelation</h2>
+    <p class="paragraph">
+        In probability theory and statistics, <strong>independence</strong> and <strong>uncorrelation</strong> are two distinct concepts. Let's explore their differences and measures of dependence.
+    </p>
+
+    <h3 class="section-title">Independence</h3>
+    <p class="paragraph">
+        Two random variables \( X \) and \( Y \) are said to be <strong>independent</strong> if the occurrence of one does not affect the occurrence of the other. Formally, the joint probability of the two variables is the product of their marginal probabilities:
+    </p>
+    <div class="math-formula">
+        $$ P(X \cap Y) = P(X) \cdot P(Y) $$
+    </div>
+    <p class="paragraph">
+        Independence implies that knowing the value of one variable provides no information about the other.
+    </p>
+
+    <h3 class="section-title">Uncorrelation</h3>
+    <p class="paragraph">
+        Two random variables \( X \) and \( Y \) are said to be <strong>uncorrelated</strong> if their covariance is zero:
+    </p>
+    <div class="math-formula">
+        $$ \text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])] = 0 $$
+    </div>
+    <p class="paragraph">
+        The covariance is a measure of the linear relationship between two variables. When the covariance is zero, there is no linear relationship between \( X \) and \( Y \). However, uncorrelated variables may still have a non-linear relationship.
+    </p>
+
+    <h3 class="section-title">Conceptual Differences</h3>
+    <p class="paragraph">
+        - <strong>Independence</strong> implies that knowing the value of one variable provides no information about the other, in terms of both linear and non-linear relationships.
+        - <strong>Uncorrelation</strong> only indicates that the linear relationship between variables is absent. It does not imply the absence of a non-linear relationship.
+    </p>
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
