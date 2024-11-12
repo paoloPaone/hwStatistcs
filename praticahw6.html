@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Overview - Distributions and Histograms</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 19px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #444;
+            color: #eee;
+            overflow-x: auto;
+            display: block;
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .container-custom {
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            color: white;
+            margin: 20px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .image-container video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-text {
+            margin-bottom: 20px;
+        }
+
+        .highlight-green {
+            color: #3cb371;
+        }
+
+        .highlight-orange {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home mb-3">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function () {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+    </div>
+
+    <h1 class="text-center">Overview of Simulation with Theoretical and Empirical Distributions</h1>
+
+    <div class="container-custom text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Discrete Distribution Simulation</h5>
+                        <p class="content-text">
+                            This simulation explores two main distributions: 
+                            <span class="highlight-green">theoretical</span> and <span class="highlight-orange">empirical</span>.
+                            The theoretical distribution is based on predefined probabilities (e.g., 0.2, 0.3, and 0.5 in the experiment) and represents the ideal behavior over an infinite number of trials.
+                            The empirical distribution, on the other hand, is built from the actual observed outcomes as the simulation progresses, with event frequencies being updated dynamically.
+                        </p>
+                        <p class="content-text">
+                            Initially, the theoretical distribution is fixed, while the empirical distribution evolves with each simulation step. As the number of trials increases, we expect the empirical distribution to converge toward the theoretical one.
+                        </p>
+
+                        <div class="image-container">
+                            <video controls>
+                                <source src="hw6video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                        <p class="content-text">
+                            The simulation generates samples based on the theoretical probabilities and updates the empirical distribution with each trial. Over time, the histograms of both distributions move closer, reflecting the convergence between theory and observed data.
+                            <br>
+                            The theoretical distribution is represented by a smooth histogram with fixed probabilities (shown in <span class="highlight-green">green</span>), while the empirical distribution is shown with a dynamic histogram that adapts to the real outcomes (in <span class="highlight-orange">orange</span>).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

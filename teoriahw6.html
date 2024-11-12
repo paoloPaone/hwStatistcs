@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental Theorem of Calculus and Its Relationship with Density Functions and CDFs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-text {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .home-btn:hover {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+
+        .home-btn i {
+            margin-right: 0;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <!-- Back to Home Button -->
+    <button id="backHomeBtn" class="btn btn-home">
+        <i class="fas fa-home"></i> Back to Home
+    </button>
+
+    <!-- JavaScript to handle button click -->
+    <script>
+        document.getElementById('backHomeBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+        });
+    </script>
+</div>
+
+<div class="container container-custom">
+    <h1>Fundamental Theorem of Calculus and Its Relationship with Density Functions and CDFs</h1>
+
+    <!-- Section 1: Fundamental Theorem of Calculus -->
+    <h2 class="section-title">The Fundamental Theorem of Calculus</h2>
+    <p class="paragraph">
+        The Fundamental Theorem of Calculus (FTC) establishes the profound connection between the derivative of a function and the integral. It states that if \( f \) is a continuous real-valued function defined on an interval \( [a, b] \), and if \( F \) is the indefinite integral of \( f \) on that interval, then:
+    </p>
+
+    <div class="math-formula">
+        $$ F'(x) = f(x) \quad \text{for all} \quad x \in [a, b] $$
+    </div>
+
+    <p class="paragraph">
+        The theorem consists of two main parts. The first part asserts that the derivative of the integral of a function \( f(x) \) is simply the function itself. The second part allows us to compute the definite integral of \( f(x) \) as the difference of the values of \( F(x) \) at the bounds of the interval:
+    </p>
+
+    <div class="math-formula">
+        $$ \int_a^b f(x) \, dx = F(b) - F(a) $$
+    </div>
+
+    <!-- Section 2: Relationship with Probability Density Functions -->
+    <h2 class="section-title">Relationship with Probability Density Functions</h2>
+    <p class="paragraph">
+        In probability theory, the probability density function (PDF) \( f(x) \) represents the likelihood that a continuous random variable takes on a particular value. The cumulative distribution function (CDF), denoted \( F(x) \), is related to the PDF through the following integral relationship:
+    </p>
+
+    <div class="math-formula">
+        $$ F(x) = \int_{-\infty}^x f(t) \, dt $$
+    </div>
+
+    <p class="paragraph">
+        The CDF \( F(x) \) represents the probability that a random variable \( X \) will take a value less than or equal to \( x \). This connection between the PDF and CDF is a direct application of the Fundamental Theorem of Calculus. Differentiating the CDF with respect to \( x \) yields the PDF:
+    </p>
+
+    <div class="math-formula">
+        $$ f(x) = \frac{d}{dx} F(x) $$
+    </div>
+
+    <!-- Section 3: Example with a Normal Distribution -->
+    <h2 class="section-title">Example: Standard Normal Distribution</h2>
+    <p class="paragraph">
+        For the standard normal distribution, the probability density function is expressed as:
+    </p>
+
+    <div class="math-formula">
+        $$ f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} $$
+    </div>
+
+    <p class="paragraph">
+        The cumulative distribution function for the standard normal distribution is the integral of the PDF:
+    </p>
+
+    <div class="math-formula">
+        $$ F(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} \, dt $$
+    </div>
+
+    <p class="paragraph">
+        By applying the Fundamental Theorem of Calculus, we can verify that differentiating the CDF with respect to \( x \) restores the original PDF:
+    </p>
+
+    <div class="math-formula">
+        $$ f(x) = \frac{d}{dx} F(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} $$
+    </div>
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
