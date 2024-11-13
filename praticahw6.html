@@ -140,14 +140,60 @@
                             </video>
                         </div>
 
-                        <p class="content-text">
-                            The simulation generates samples based on the theoretical probabilities and updates the empirical distribution with each trial. Over time, the histograms of both distributions move closer, reflecting the convergence between theory and observed data.
-                            <br>
-                            The theoretical distribution is represented by a smooth histogram with fixed probabilities (shown in <span class="highlight-green">green</span>), while the empirical distribution is shown with a dynamic histogram that adapts to the real outcomes (in <span class="highlight-orange">orange</span>).
-                        </p>
+    <p class="content-text">
+    The theoretical distribution is updated by calculating each value as the probability multiplied by the sample size (<code>prob * sampleSize</code>) and adding it to the series.
+    The empirical distribution  is updated based on the frequency of observed outcomes, using the <code>counts</code> dictionary to get the actual count for each outcome and adding it to the series .
+</p>
+
+
+                        <!-- Button to trigger code modal -->
+                        <button type="button" class="custom-btn" data-toggle="modal" data-target="#codeModal">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <!-- Modal for Displaying Code -->
+            <div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="codeModalLabel">Code Snippet</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <pre id="modalCode">
+private void UpdateTheoreticalSeries()
+{
+    var theoreticalSeries = plotModel.Series[1] as BarSeries;
+    theoreticalSeries.Items.Clear();
+    foreach (var prob in probabilities)
+    {
+        theoreticalSeries.Items.Add(new BarItem { Value = prob * sampleSize });
+    }
+    plotModel.InvalidatePlot(true);
+}
+
+private void UpdateEmpiricalSeries()
+{
+    var empiricalSeries = plotModel.Series[0] as BarSeries;
+    empiricalSeries.Items.Clear();
+    foreach (var prob in probabilities)
+    {
+        int index = probabilities.IndexOf(prob);
+        empiricalSeries.Items.Add(new BarItem { Value = counts.ContainsKey(index) ? counts[index] : 0 });
+    }
+    plotModel.InvalidatePlot(true);
+}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
