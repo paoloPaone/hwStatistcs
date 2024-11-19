@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Distribution Analysis of \( Y = g^U \mod n \)</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .section-container {
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+            justify-items: start;
+        }
+
+        .section-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .text-block {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #ff5733;
+            font-weight: bold;
+        }
+
+        .highlight-red {
+            color: red;
+            font-weight: bold;
+        }
+
+        .highlight-background {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            .highlight-background {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Analysis of Distributions of \( Y = g^U \mod n \)</h1>
+
+<div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function() {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+</div>
+
+        <div class="section-container">
+            <div class="section-header">
+                <h3><span class="highlight-red">Experiment A: Distribution of \( Y \) for \( n = 19 \) and \( g = 2, 3, 10, 17 \)</h3>
+            </div>
+
+            <div class="section-content">
+                <div class="text-block">
+                    <p>
+                        In the first experiment, the goal was to analyze the distribution of \( Y = g^U \mod 19 \) for different values of base \( g \) and a prime modulus <span class="highlight-red">\( n = 19 \)</span>. This case is particularly interesting because \( 19 \) is a prime number, which ensures a well-defined algebraic structure and a robust multiplicative group. The idea is that values of \( g \) which are generators of the group (i.e., generating a complete sequence of distinct values) can uniformly distribute the results of \( Y \) across the interval from \( 0 \) to \( 18 \).
+                    </p>
+                    <p>
+                        The values of \( g \) chosen (<span class="highlight-red">\( 2, 3, 10, 17 \)</span>) were selected specifically to ensure that the powers of \( g \) produce a complete range of values modulo 19, avoiding repetitions or biases in the distribution. This kind of uniform distribution is highly desired in cryptographic applications because it minimizes the predictability of the values of \( Y \), increasing uncertainty (entropy) and making it difficult for an attacker to guess the value of \( Y \).
+                    </p>
+                    <p>
+                        Another key point in this experiment is the calculation of the entropy of the distribution. A high-entropy distribution makes it harder for an attacker to predict the value of the secret variable \( U \), which is crucial for cryptographic security.
+                    </p>
+                </div>
+                <div class="image-container">
+                    <img src="hw7-2.png" alt="Experiment A Distribution">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <div class="section-header">
+                <h3> <span class="highlight-red">Experiment B: Distribution of \( Y \) for \( n = 15 \) and \( g = 3, 6, 9, 12 \)</h3>
+            </div>
+
+            <div class="section-content">
+                <div class="text-block">
+                    <p>
+                        In the second experiment, the distribution of \( Y = g^U \mod 15 \) was analyzed for values of \( g \) chosen from <span class="highlight-red">\( 3, 6, 9, 12 \)</span>. Here, the modulus <span class="highlight-red">\( 15 \)</span> is a composite number, and this choice has significant cryptographic implications. Unlike a prime number, a composite modulus like 15 does not guarantee a rich multiplicative group structure, which can reduce the variability of the generated \( Y \) values. Some of the chosen values for \( g \) in this experiment may not be generators of the group modulo 15, meaning the powers of \( g \) could repeat more quickly or produce fewer distinct values.
+                    </p>
+                    <p>
+                        A non-uniform distribution, like the one that might emerge from this experiment, has negative implications for cryptographic security. A \( Y \)-distribution that is not well-balanced makes the system vulnerable to predictive attacks because an attacker could observe the frequency of certain \( Y \) values occurring and infer information about the secret \( U \) value.
+                    </p>
+                </div>
+                <div class="image-container">
+                    <img src="hw7-1.png" alt="Experiment B Distribution">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

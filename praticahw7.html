@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampling Means Distribution Overview</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7t06XkFQkE0K6KhNhT1lhuEjQBlLcm3B+R6G" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            font-size: 19px;
+        }
+
+        pre {
+            background-color: #333;
+            padding: 10px;
+            border: 1px solid #444;
+            color: #eee;
+            overflow-x: auto;
+            display: block;
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .container-custom {
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border: none;
+            color: white;
+            margin: 20px 0;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+            border: none;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .image-container {
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function() {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+</div>
+
+
+
+    <h1 class="text-center">Sampling Means Distribution Overview</h1>
+
+    <div class="container-custom text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-auto">
+                    <div class="card-body">
+                        <h5 class="card-title">Sampling Means Distribution</h5>
+                        <p>
+
+                        The graph below illustrates the distribution of sample means obtained from 
+                        <span style="font-style: italic; color: red;">m = 1000</span> samples of size 
+                        <span style="font-style: italic; color: red;">n = 20</span>, derived from the theoretical discrete parent distribution 
+                        <span style="font-style: italic; color: red;">[0, 1, 2]</span> with probabilities 
+                        <span style="font-style: italic; color: red;">[0.2, 0.3, 0.5]</span>. The 
+                        <strong style="color: red;">X-axis</strong> represents the frequencies of the sample means, and the 
+                        <strong style="color: red;">Y-axis</strong> shows the intervals (bins) of the sample means. The 
+                        <strong style="color: red;">"Mean of Means"</strong> is 
+                        <span style="font-style: italic; color: red;">1.30</span>, closely aligning with the theoretical mean of the parent distribution.
+                        The variance of the sample means, 
+                        <span style="font-style: italic; color: red;">0.03</span>, is smaller than that of the parent distribution, consistent with the 
+                        formula 
+                        <span style="font-style: italic; color: red;">
+                            Variance of Means = Parent Distribution Variance / n
+                        </span>. This reflects the 
+                        <strong style="color: red;">Central Limit Theorem</strong>, which predicts that the sample means will approximate a normal distribution 
+                        as <span style="font-style: italic; color: red;">n</span> and 
+                        <span style="font-style: italic; color: red;">m</span> grow.
+
+                        </p>
+
+                        <div class="image-container">
+                            <img src="hw7.png" alt="Sampling Means Distribution Graph" class="img-fluid">
+                        </div>
+                        <button class="btn custom-btn" onclick="showCode('code1')">
+                            <i class="fas fa-code"></i> Show Code
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying code -->
+    <div class="modal fade" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="codeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="codeModalLabel">Code Snippet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <pre id="modalCode"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const codeSnippets = {
+            code1: `
+            private void UpdatePlot(List<double> sampleMeans) {
+                plotModel.Series.Clear();
+                int numBins = 20;
+                double min = sampleMeans.Min();
+                double max = sampleMeans.Max();
+                double binWidth = (max - min) / numBins;
+                double[] bins = new double[numBins];
+                foreach (var mean in sampleMeans) {
+                    int binIndex = (int)((mean - min) / binWidth);
+                    if (binIndex == numBins) binIndex--;
+                    bins[binIndex]++;
+                }
+                var barSeries = new BarSeries {
+                    Title = "Sampling Means Distribution",
+                    StrokeColor = OxyColors.Black,
+                    StrokeThickness = 1,
+                    FillColor = OxyColor.FromRgb(30, 144, 255)
+                };
+                for (int i = 0; i < numBins; i++) {
+                    barSeries.Items.Add(new BarItem { Value = bins[i] });
+                }
+                plotModel.Series.Add(barSeries);
+                plotModel.InvalidatePlot(true);
+            }`,
+        };
+
+        function showCode(codeKey) {
+            document.getElementById('modalCode').textContent = codeSnippets[codeKey];
+            $('#codeModal').modal('show');
+        }
+    </script>
+</body>
+
+</html>
