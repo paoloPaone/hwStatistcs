@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shannon Entropy and Primitive Roots</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .math-formula {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-text {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .home-btn:hover {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+
+        .home-btn i {
+            margin-right: 0;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+        .small-math-formula {
+    font-size: 1rem;  /* Puoi regolare la dimensione a tuo piacimento */
+}
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <!-- Back to Home Button -->
+    <button id="backHomeBtn" class="btn btn-home">
+        <i class="fas fa-home"></i> Back to Home
+    </button>
+
+    <!-- JavaScript to handle button click -->
+    <script>
+        document.getElementById('backHomeBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+        });
+    </script>
+</div>
+
+<div class="container container-custom">
+    <h1>Shannon Entropy and Primitive Roots</h1>
+
+    <!-- Section 1: Shannon Entropy -->
+    <h2 class="section-title">Shannon Entropy</h2>
+    <p class="paragraph">
+        Shannon entropy is a fundamental concept in information theory that quantifies the uncertainty or unpredictability of a random variable's distribution. It is used to measure the amount of uncertainty or "information" produced by a source. Specifically, for a discrete random variable \( X \) with a probability mass function \( P(x) \), the Shannon entropy \( H(X) \) is defined as:
+    </p>
+
+    <div class="small-math-formula">
+        $$ H(X) = - \sum_{x \in X} P(x) \log_2 P(x) $$
+    </div>
+
+    <p class="paragraph">
+        In this formula, \( P(x) \) represents the probability of occurrence of each event \( x \) in the set of possible outcomes \( X \). The logarithm is taken to base 2, so the entropy is measured in bits. Shannon entropy gives us a quantitative measure of uncertainty in a random process and helps to assess how much information is contained in a message. For instance, the higher the entropy, the more unpredictable the outcomes of the random variable are.
+    </p>
+
+    <h3 class="section-title">Other Diversity Measures</h3>
+    <p class="paragraph">
+        In addition to Shannon entropy, there are several other important measures of diversity in probability distributions. Some of the most commonly used ones include:
+    </p>
+    <ul>
+        <li><strong>Gini Index</strong>: A measure of impurity or inequality, commonly used in decision tree algorithms like CART. It quantifies the likelihood that two randomly selected elements will differ in a binary classification problem.</li>
+        <li><strong>Rényi Entropy</strong>: A generalization of Shannon entropy, parameterized by a real number \( \alpha \). This entropy measure allows more flexibility, providing different sensitivities to rare or frequent events based on the value of \( \alpha \).</li>
+        <li><strong>Tsallis Entropy</strong>: Another generalization of Shannon entropy, often used in complex systems and non-equilibrium statistical mechanics. Tsallis entropy is useful in describing systems with long-range interactions or non-extensive behavior.</li>
+    </ul>
+
+    <!-- Section 2: Primitive Roots -->
+    <h2 class="section-title">Primitive Roots</h2>
+    <p class="paragraph">
+        A primitive root modulo a prime number \( p \) is an integer \( g \) such that for every integer \( a \) that is coprime to \( p \), there exists an integer \( k \) such that:
+    </p>
+
+    <div class="math-formula">
+        $$ g^k \mod p = a $$
+    </div>
+
+    <p class="paragraph">
+        In simpler terms, a primitive root modulo \( p \) is an integer whose powers generate all the integers that are coprime to \( p \) (i.e., all integers between 1 and \( p-1 \)). The number of integers that are coprime to \( p \) is given by Euler's totient function \( \phi(p) = p - 1 \), so a primitive root modulo \( p \) generates the complete set of integers \( \{1, 2, \dots, p-1\} \).
+    </p>
+
+    <h3 class="section-title">Example of Primitive Roots</h3>
+    <p class="paragraph">
+        Consider \( p = 7 \), a prime number. The primitive roots modulo 7 are \( 3 \) and \( 5 \). This is because the powers of 3 modulo 7 generate all the numbers from 1 to 6, as demonstrated by the following calculations:
+    </p>
+
+   <div class="math-formula small-math-formula">
+    \( 3^1 \mod 7 = 3, \quad 3^2 \mod 7 = 2, \quad 3^3 \mod 7 = 6, \quad 3^4 \mod 7 = 4, \quad 3^5 \mod 7 = 5, \quad 3^6 \mod 7 = 1 \)
+</div>
+
+
+    <p class="paragraph">
+        Similarly, the powers of \( 5 \) modulo 7 also generate the full set of integers \( \{1, 2, 3, 4, 5, 6\} \), making both 3 and 5 primitive roots modulo 7.
+    </p>
+
+    <h3 class="section-title">Applications of Primitive Roots</h3>
+    <p class="paragraph">
+        Primitive roots are important in number theory and have applications in fields such as cryptography. For example, in the Diffie-Hellman key exchange protocol, primitive roots are used to generate secure keys for communication. This makes the understanding of primitive roots crucial in modern cryptography, where secure communication relies on mathematical properties such as modular exponentiation.
+    </p>
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
