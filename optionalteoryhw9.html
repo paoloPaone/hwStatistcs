@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Methods and Statistical Properties</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            margin-left: 20px;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+     <div class="container">
+        <!-- Back to Home Button -->
+        <button id="backHomeBtn" class="btn btn-home">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+
+        <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function() {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+</div>
+
+<div class="container container-custom">
+    <h1>Encryption Methods and Statistical Properties</h1>
+
+    <!-- Section 1 -->
+    <h2 class="section-title">Fundamental Ideas of Encryption</h2>
+    <p class="paragraph">
+        Encryption is the cornerstone of data security, transforming plaintext into ciphertext to make it unreadable without proper authorization. This process is vital for safeguarding sensitive information across domains like online banking, e-commerce, and secure communications. Let's explore the core encryption techniques:
+    </p>
+    <ul>
+        <li>
+            <span class="highlight">Symmetric Encryption:</span> A single key is used for both encryption and decryption. The simplicity of managing one key makes it efficient, but sharing the key securely can be a challenge. <strong>Example algorithms:</strong> 
+            <ul>
+                <li><em>AES (Advanced Encryption Standard):</em> Known for its high performance and security, used in applications like Wi-Fi security (WPA2).</li>
+                <li><em>DES (Data Encryption Standard):</em> An older standard, now largely replaced due to vulnerabilities.</li>
+            </ul>
+        </li>
+        <li>
+            <span class="highlight">Asymmetric Encryption:</span> Employs a pair of keys—public for encryption and private for decryption. This ensures secure key exchange over untrusted networks. <strong>Example algorithms:</strong>
+            <ul>
+                <li><em>RSA:</em> Widely used in SSL/TLS for securing web traffic.</li>
+                <li><em>Elliptic Curve Cryptography (ECC):</em> Provides similar security with smaller key sizes, making it ideal for resource-constrained devices.</li>
+            </ul>
+        </li>
+        <li>
+            <span class="highlight">Hashing:</span> A one-way process that converts input data into a fixed-size hash value. Hashing is critical for verifying data integrity and creating digital signatures. <strong>Example algorithms:</strong>
+            <ul>
+                <li><em>SHA (Secure Hash Algorithm):</em> A family of algorithms, with SHA-256 being widely used in blockchain technology.</li>
+                <li><em>MD5:</em> Once popular, now considered insecure for cryptographic purposes.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Section 2 -->
+    <h2 class="section-title">Statistical Properties of Encryption</h2>
+    <p class="paragraph">
+        Effective encryption relies on ensuring that ciphertext appears indistinguishable from random data. The following statistical properties are fundamental to achieving this goal:
+    </p>
+    <ul>
+        <li>
+            <span class="highlight">Avalanche Effect:</span> A hallmark of strong encryption, where a minor change in the input (plaintext or key) produces a drastically different ciphertext. <strong>Example:</strong> Changing one bit in an AES input block affects, on average, 50% of the output bits.
+        </li>
+        <li>
+            <span class="highlight">Uniform Distribution:</span> Ciphertext output should mimic random noise, with no discernible patterns. Statistical tests like chi-squared or entropy calculations are often applied to verify this property.
+        </li>
+        <li>
+            <span class="highlight">High Entropy:</span> High entropy ensures that the ciphertext does not leak information about the plaintext. For instance, a predictable key stream in a stream cipher would result in low entropy and potential vulnerabilities.
+        </li>
+        <li>
+            <span class="highlight">Key Sensitivity:</span> A small change in the key should result in completely different encryption outputs, making brute-force attacks impractical.
+        </li>
+    </ul>
+
+    <!-- Section 3 -->
+    <h2 class="section-title">Applications of Statistical Properties</h2>
+    <p class="paragraph">
+        The statistical properties of encryption methods play a critical role in real-world scenarios, ensuring the robustness and reliability of secure systems:
+    </p>
+    <ul>
+        <li>
+            <span class="highlight">Secure Communications:</span> Strong encryption protects messages from eavesdropping in applications like messaging apps (e.g., Signal, WhatsApp) and VPNs.
+        </li>
+        <li>
+            <span class="highlight">Digital Signatures:</span> Cryptographic hash functions ensure the integrity of digital documents, while asymmetric encryption enables non-repudiation.
+        </li>
+        <li>
+            <span class="highlight">Blockchain Technology:</span> Cryptographic hashes and digital signatures secure transactions and maintain trust in decentralized systems like Bitcoin and Ethereum.
+        </li>
+        <li>
+            <span class="highlight">Forensic Cryptanalysis:</span> Understanding statistical properties is essential for evaluating the strength of encryption and identifying potential vulnerabilities during cryptanalysis.
+        </li>
+        <li>
+            <span class="highlight">Cloud Security:</span> Techniques like homomorphic encryption allow computations on encrypted data without revealing the plaintext, enabling privacy-preserving data analysis.
+        </li>
+    </ul>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
