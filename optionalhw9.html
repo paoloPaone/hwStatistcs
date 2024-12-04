@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substitution Cipher and Statistical Vulnerabilities</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding-top: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .paragraph {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .card {
+            border-radius: 15px;
+            background-color: #343a40;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .card:hover {
+            transform: translateY(10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #444;
+            border-radius: 15px 15px 0 0;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 20px;
+            padding: 15px;
+        }
+
+        .card-body {
+            background-color: #1d1f1f;
+            padding: 30px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .card-body pre {
+            background-color: #2c2f34;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .image-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .image-section img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid #007bff;
+            transition: transform 0.3s ease;
+        }
+
+        .image-section img:hover {
+            transform: scale(1.2);
+        }
+
+        .image-section p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #cccccc;
+        }
+
+        .reflection {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #cccccc;
+            text-align: justify;
+        }
+
+        .home-btn, .optional-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            margin-top: 20px;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s, border 0.3s;
+            cursor: pointer;
+        }
+
+        .home-btn i, .optional-btn i {
+            margin-right: 10px;
+        }
+
+        .home-btn:hover, .optional-btn:hover {
+            background-color: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        .content-container {
+            margin-top: 30px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s, border 0.3s;
+            cursor: pointer;
+        }
+
+        .home-btn:hover {
+            background-color: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        .home-btn i {
+            margin-right: 8px;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+         /* Centra solo il titolo */
+        h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-top: 30px;
+            text-align: center;  /* Questa regola centra il testo */
+        }
+
+
+    </style>
+</head>
+<body>
+ <div class="container">
+    <!-- Back to Home Button -->
+    <button id="backHomeBtn" class="btn home-btn">
+        <i class="fas fa-home"></i> Back to Home
+    </button>
+
+    <!-- JavaScript to handle button click -->
+    <script>
+        document.getElementById('backHomeBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+        });
+    </script>
+</div>
+<h1>Substitution Cipher and Statistical Vulnerabilities</h1>
+    <!-- Main Content Section -->
+    <div class="container  text-center container-custom">
+        
+
+        <div class="content-container">
+            <!-- Image Section -->
+            <div class="image-section">
+                <img src="hw9-1.png" alt="Substitution Cipher Image">
+                <p>Diagram of Substitution Cipher</p>
+            </div>
+
+            <!-- Text Section -->
+            <div class="paragraph">
+                <p>The core of the encryption system is based on the substitution cipher, where each letter of the original message is replaced by a randomly chosen letter. This type of encryption is deterministic because each letter in the plaintext is always replaced by the same letter in the ciphertext, creating a static mapping. If an attacker has access to both the ciphertext and the plaintext or can analyze a sample of ciphertext, the mapping between the plaintext and ciphertext letters becomes easily decipherable, especially if the system uses a fixed substitution key.</p>
+
+                <p>The following histogram shows how the letter "<span style="color: orange;">I</span>" in the plaintext is mapped to the letter "<span style="color: #007bff;">W</span>" in the ciphertext, as both bars <span style="color: orange;">orange</span> for the plaintext and <span style="color: #007bff ;">blue</span> for the ciphertext) have the same height. This phenomenon demonstrates the predictability of the mapping in the substitution cipher, making the system vulnerable to frequency analysis.</p>
+
+                <p>In the case of a simple substitution cipher, the entropy of the message does not increase significantly, since the mapping is not complex and does not substantially alter the statistical distribution of the letters. A more robust encryption system, such as AES, tends to generate a more uniform distribution of letters in the ciphertext, eliminating easily recognizable frequency patterns, making statistical analysis much harder.</p>
+            </div>
+
+            <h2>Why Entropy Is Crucial for Robust Encryption</h2>
+
+            <div class="paragraph">
+                <p>Entropy is a statistical measure that indicates the degree of uncertainty or randomness in a set of data. High entropy in the ciphertext indicates that it is more difficult for an attacker to predict or analyze the content of the message, as there are no obvious patterns to exploit. In the context of the substitution cipher, although the distribution of letters in the ciphertext has changed, it remains correlated with the plaintext's distribution, maintaining a certain level of predictability. The deterministic substitution and lack of dynamic variation in the encryption keys reduce the entropy of the ciphertext, making the system vulnerable.</p>
+
+                <p>Permutation (reversing the order of letters) can introduce a certain level of complexity, but it does not change the letter distribution and therefore does not significantly alter the entropy. While the order of the letters is changed, the frequencies of the letters remain the same, and the ability to analyze frequencies and reverse the mapping between plaintext and ciphertext remains unchanged.</p>
+            </div>
+
+            <!-- AES Reflection Section -->
+            <h3>Why AES is Not Vulnerable to Statistical Analysis</h3>
+            <div class="reflection">
+                <p>AES (Advanced Encryption Standard) is a symmetric-key block cipher that is designed to be resistant to various forms of cryptanalysis, including statistical analysis. Unlike the substitution cipher, AES operates on fixed-size blocks of data (typically 128 bits) and uses complex, dynamic rounds of permutation and substitution to scramble the data. AES is not deterministic in the way that a simple substitution cipher is; instead, it uses a secret key, which ensures that even if an attacker can obtain some ciphertext, it is virtually impossible to derive the original message without the key.</p>
+
+                <p>One of the key factors that make AES robust is its high entropy. The encryption process introduces significant randomness, and the statistical distribution of the ciphertext is highly uniform. This means that there are no obvious patterns in the ciphertext, which prevents frequency analysis from being effective. Each encryption round involves complex operations such as substitution, permutation, and mixing, which significantly increase the complexity and unpredictability of the ciphertext.</p>
+            </div>
+
+            <!-- Code Sections with Icons -->
+            <!-- Card for Generation of the Substitution Key -->
+<!-- Card for Generation of the Substitution Key -->
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-cogs"></i> Generation of the Substitution Key
+    </div>
+    <div class="card-body">
+        <!-- Descrizione della funzionalità -->
+        <p>This method generates a substitution key by shuffling the alphabet and mapping each letter to a randomly chosen counterpart. This is the key that will be used for both encryption and decryption of messages.</p>
+        <button class="btn custom-btn" onclick="toggleCode(1)">Show Code</button>
+        
+        <!-- Codice nascosto -->
+        <pre id="code1" style="display: none;">
+private void GenerateSubstitutionKey()
+{
+    substitutionKey = new Dictionary<char, char>();
+    reverseKey = new Dictionary<char, char>();
+    var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+    var shuffled = letters.OrderBy(_ => Guid.NewGuid()).ToArray();
+
+    for (int i = 0; i < letters.Length; i++)
+    {
+        substitutionKey[letters[i]] = shuffled[i];
+        reverseKey[shuffled[i]] = letters[i];
+    }
+}
+        </pre>
+    </div>
+</div>
+
+<!-- Card for Message Encryption -->
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-lock"></i> Message Encryption
+    </div>
+    <div class="card-body">
+        <!-- Descrizione della funzionalità -->
+        <p>This method encrypts a given message by substituting each letter with the corresponding one from the substitution key. Non-alphabetic characters remain unchanged.</p>
+        <button class="btn custom-btn" onclick="toggleCode(1)">Show Code</button>
+        
+        <!-- Codice nascosto -->
+        <pre id="code2" style="display: none;">
+private string EncryptMessage(string message)
+{
+    return new string(message.Select(ch =>
+    {
+        if (substitutionKey.ContainsKey(ch))
+            return substitutionKey[ch];
+        return ch; // Keep non-alphabetic characters unchanged
+    }).ToArray());
+}
+        </pre>
+    </div>
+</div>
+
+<!-- Card for Decryption Based on Frequency Analysis -->
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-chart-line"></i> Decryption Based on Frequency Analysis
+         
+    </div>
+    <div class="card-body">
+        <!-- Descrizione della funzionalità -->
+        <p>This method demonstrates how frequency analysis can be used to break a substitution cipher. By reversing the substitution key based on letter frequencies, we can decrypt the message.</p>
+        <button class="btn custom-btn" onclick="toggleCode(1)">Show Code</button>
+        <!-- Codice nascosto -->
+        <pre id="code3" style="display: none;">
+private string DecryptMessageBasedOnFrequency(string encryptedMessage)
+{
+    var decryptedMessage = new StringBuilder();
+    foreach (var ch in encryptedMessage)
+    {
+        if (reverseKey.ContainsKey(ch))
+            decryptedMessage.Append(reverseKey[ch]);
+        else
+            decryptedMessage.Append(ch); // Leave non-alphabetic characters unchanged
+    }
+    return decryptedMessage.ToString();
+}
+        </pre>
+        
+    </div>
+</div>
+
+<script>
+    function toggleCode(codeId) {
+        var codeElement = document.getElementById(codeId);
+        if (codeElement.style.display === "none") {
+            codeElement.style.display = "block"; // Mostra il codice
+        } else {
+            codeElement.style.display = "none"; // Nasconde il codice
+        }
+    }
+</script>
+
+
+        </div>
+    </div>
+</body>
+</html>

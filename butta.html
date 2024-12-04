@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics 2024/2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7t06XkFQkE0K6KhNhT1lhuEjQBlLcm3B+R6G" crossorigin="anonymous">
+    <link rel="stylesheet" href="button-styles">
+    <style>
+        /* Toggle button styles */
+        .toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: inline-flex;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0.5rem;
+            background-color: #444;
+            border-radius: 2rem;
+            user-select: none;
+            cursor: pointer;
+            transition: translate 0.3s, background-color 0.8s;
+            z-index: 1000;
+        }
+
+        .toggle::before {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            content: "";
+            height: calc(100% - 2px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            transition: translate 0.3s, background-color 0.8s;
+            background: #fff;
+        }
+
+        .toggle input {
+            position: absolute;
+            appearance: none;
+        }
+
+        .toggle span {
+            position: relative;
+            transition: translate 0.6s ease 0.2s;
+        }
+
+        .toggle span:nth-of-type(1) {
+            translate: 0 150%;
+        }
+
+        .toggle span:nth-of-type(2) {
+            translate: 0 0%;
+        }
+
+        .toggle input:checked ~ span:nth-of-type(1) {
+            translate: 0 0%;
+        }
+
+        .toggle input:checked ~ span:nth-of-type(2) {
+            translate: 0 -150%;
+        }
+
+        .toggle input:checked ~ ::before {
+            translate: 100% 0;
+            background-color: #444;
+        }
+
+        /* Default light mode styles */
+        body {
+            background-color: white;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .homework-card {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .hero {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .homework-card a {
+            background-color: #28a745;
+            color: white;
+        }
+
+        /* Dark Mode styles */
+        [data-mode="dark"] body {
+            background-color: #121212;
+            color: #eee;
+        }
+
+        [data-mode="dark"] .homework-card {
+            background-color: #333;
+            color: #ddd;
+        }
+
+        [data-mode="dark"] .homework-card a {
+            background-color: #007bff;
+            color: white;
+        }
+
+        [data-mode="dark"] .hero {
+            background-color: #222;
+            color: #ddd;
+        }
+
+        /* Light mode styles when the sun is active */
+        [data-mode="light"] body {
+            background-color: white;
+            color: #333;
+        }
+
+        [data-mode="light"] .homework-card {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        [data-mode="light"] .homework-card a {
+            background-color: #28a745; /* Green for light mode */
+            color: white;
+        }
+
+        [data-mode="light"] .hero {
+            background-color: #fff;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body data-mode="light">
+    <!-- Toggle Button for Dark/Light Mode -->
+    <label class="toggle" aria-label="Toggle dark mode">
+        <input type="checkbox">
+        <span>☀️</span>
+        <span>🌙</span>
+    </label>
+
+    <div class="container"> <!-- Main container -->
+        <!-- Hero Section -->
+        <header class="hero" style="background-image: url('image.jpeg');">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1>Statistics 2024/2025</h1>
+                <p class="subtitle">This website shows the homework assignments completed for the Statistics course</p>
+            </div>
+        </header>
+
+        <!-- Student Section -->
+        <section class="student-section">
+            <div class="container-card"> <!-- Separate container for student info -->
+                <div class="student-info card">
+                    <h2>Student Information</h2>
+                    <p>Paolo Paone</p>
+                    <p>ID: 2142219</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Homework Section -->
+        <section class="homework-section">
+            <h2 class="section-title text-white">Homework</h2>
+            <div class="homework-container"> <!-- Container for homework -->
+                <div class="homework-row"> <!-- Row for organizing homework -->
+                    <div class="homework-card">
+                        <h3>Homework 1 - Theory <i class="fas fa-book-open"></i></h3>
+                        <a href="teoriahw1.html" class="btn theory">Go to Theory <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="homework-card">
+                        <h3>Homework 1 - Practice <i class="fas fa-pencil-alt"></i></h3>
+                        <a href="praticahw1.html" class="btn theory">Go to Practice <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="homework-row">
+                    <div class="homework-card">
+                        <h3>Homework 2 - Theory <i class="fas fa-book-open"></i></h3>
+                        <a href="teoriahw2.html" class="btn theory">Go to Theory <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="homework-card">
+                        <h3>Homework 2 - Practice <i class="fas fa-pencil-alt"></i></h3>
+                        <a href="praticahw2.html" class="btn theory">Go to Practice <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Add other homework cards here... -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript for toggling dark/light mode
+        document.querySelector(".toggle input").addEventListener("change", (evt) => {
+            document.documentElement.dataset.mode = evt.currentTarget.checked ? "dark" : "light";
+        });
+    </script>
+</body>
+</html>
