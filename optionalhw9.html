@@ -189,6 +189,15 @@
             margin-top: 30px;
             text-align: center;  /* Questa regola centra il testo */
         }
+            pre {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+        }
+        pre.visible {
+            opacity: 1;
+            display: block;
+        }
 
 
     </style>
@@ -247,17 +256,14 @@
             <!-- Code Sections with Icons -->
             <!-- Card for Generation of the Substitution Key -->
 <!-- Card for Generation of the Substitution Key -->
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-cogs"></i> Generation of the Substitution Key
-    </div>
-    <div class="card-body">
-        <!-- Descrizione della funzionalità -->
-        <p>This method generates a substitution key by shuffling the alphabet and mapping each letter to a randomly chosen counterpart. This is the key that will be used for both encryption and decryption of messages.</p>
-        <button class="btn custom-btn" onclick="toggleCode(1)">Show Code</button>
-        
-        <!-- Codice nascosto -->
-        <pre id="code1" style="display: none;">
+<<div class="card">
+            <div class="card-header">
+                <i class="fas fa-cogs"></i> Generation of the Substitution Key
+            </div>
+            <div class="card-body">
+                <p>This method generates a substitution key by shuffling the alphabet and mapping each letter to a randomly chosen counterpart. This is the key that will be used for both encryption and decryption of messages.</p>
+                <button class="btn custom-btn" onclick="toggleCode('code1')">Show Code</button>
+                <pre id="code1">
 private void GenerateSubstitutionKey()
 {
     substitutionKey = new Dictionary<char, char>();
@@ -271,22 +277,19 @@ private void GenerateSubstitutionKey()
         reverseKey[shuffled[i]] = letters[i];
     }
 }
-        </pre>
-    </div>
-</div>
+                </pre>
+            </div>
+        </div>
 
-<!-- Card for Message Encryption -->
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-lock"></i> Message Encryption
-    </div>
-    <div class="card-body">
-        <!-- Descrizione della funzionalità -->
-        <p>This method encrypts a given message by substituting each letter with the corresponding one from the substitution key. Non-alphabetic characters remain unchanged.</p>
-        <button class="btn custom-btn" onclick="toggleCode(1)">Show Code</button>
-        
-        <!-- Codice nascosto -->
-        <pre id="code2" style="display: none;">
+        <!-- Card for Message Encryption -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-lock"></i> Message Encryption
+            </div>
+            <div class="card-body">
+                <p>This method encrypts a given message by substituting each letter with the corresponding one from the substitution key. Non-alphabetic characters remain unchanged.</p>
+                <button class="btn custom-btn" onclick="toggleCode('code2')">Show Code</button>
+                <pre id="code2">
 private string EncryptMessage(string message)
 {
     return new string(message.Select(ch =>
@@ -296,22 +299,19 @@ private string EncryptMessage(string message)
         return ch; // Keep non-alphabetic characters unchanged
     }).ToArray());
 }
-        </pre>
-    </div>
-</div>
+                </pre>
+            </div>
+        </div>
 
-<!-- Card for Decryption Based on Frequency Analysis -->
-<div class="card">
-    <div class="card-header">
-        <i class="fas fa-chart-line"></i> Decryption Based on Frequency Analysis
-         
-    </div>
-    <div class="card-body">
-        <!-- Descrizione della funzionalità -->
-        <p>This method demonstrates how frequency analysis can be used to break a substitution cipher. By reversing the substitution key based on letter frequencies, we can decrypt the message.</p>
-        <button class="btn custom-btn" onclick="toggleCode(1)">Show Code</button>
-        <!-- Codice nascosto -->
-        <pre id="code3" style="display: none;">
+        <!-- Card for Decryption Based on Frequency Analysis -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-chart-line"></i> Decryption Based on Frequency Analysis
+            </div>
+            <div class="card-body">
+                <p>This method demonstrates how frequency analysis can be used to break a substitution cipher. By reversing the substitution key based on letter frequencies, we can decrypt the message.</p>
+                <button class="btn custom-btn" onclick="toggleCode('code3')">Show Code</button>
+                <pre id="code3">
 private string DecryptMessageBasedOnFrequency(string encryptedMessage)
 {
     var decryptedMessage = new StringBuilder();
@@ -324,24 +324,20 @@ private string DecryptMessageBasedOnFrequency(string encryptedMessage)
     }
     return decryptedMessage.ToString();
 }
-        </pre>
-        
-    </div>
-</div>
-
-<script>
-    function toggleCode(codeId) {
-        var codeElement = document.getElementById(codeId);
-        if (codeElement.style.display === "none") {
-            codeElement.style.display = "block"; // Mostra il codice
-        } else {
-            codeElement.style.display = "none"; // Nasconde il codice
-        }
-    }
-</script>
-
-
+                </pre>
+            </div>
         </div>
     </div>
+
+    <script>
+        function toggleCode(codeId) {
+            var codeElement = document.getElementById(codeId);
+            if (codeElement.classList.contains("visible")) {
+                codeElement.classList.remove("visible");
+            } else {
+                codeElement.classList.add("visible");
+            }
+        }
+    </script>
 </body>
 </html>
