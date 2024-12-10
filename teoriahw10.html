@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampling Mean, Variance, Lebesgue-Stieltjes Integration and Its Applications</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="button-styles.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .paragraph {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+
+        .custom-btn i {
+            margin-right: 10px;
+            font-size: 22px;
+            transition: transform 0.2s;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+            transform: translateX(5px);
+        }
+
+        .custom-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .home-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-text {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 15px;
+            vertical-align: middle;
+        }
+
+        .home-btn:hover {
+            background-color: #ffffff;
+            color: #007bff;
+        }
+
+        .home-btn i {
+            margin-right: 0;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <!-- Back to Home Button -->
+    <button id="backHomeBtn" class="btn btn-home">
+        <i class="fas fa-home"></i> Back to Home
+    </button>
+
+    <!-- JavaScript to handle button click -->
+    <script>
+        document.getElementById('backHomeBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+        });
+    </script>
+</div>
+
+<div class="container container-custom">
+    <h1> Sampling Mean, Variance, and Lebesgue–Stieltjes Integration</h1>
+
+    <!-- Section 1: Sampling Mean and Variance -->
+    <h2 class="section-title">Sampling Mean and Variance</h2>
+    <p class="paragraph">
+        The sampling mean is a basic yet essential statistic that estimates the central tendency of a data set. Given a sample of independent observations \( x_1, x_2, \dots, x_n \), the sample mean \( \overline{X} \) is the arithmetic average of these observations, formulated as:
+    </p>
+    <div class="math-formula">
+        $$ \overline{X} = \frac{1}{n} \sum_{i=1}^{n} x_i $$
+    </div>
+
+    <p class="paragraph">
+        This simple statistic is used to understand the "center" of the data, and it serves as a critical measure in many statistical applications. The sample mean has desirable properties, particularly as the sample size grows larger, due to the Law of Large Numbers, which ensures that the sample mean converges to the population mean.
+    </p>
+
+    <p class="paragraph">
+        Variance, in contrast, is a measure of how spread out the values are around the mean. The sample variance \( s^2 \) is defined as:
+    </p>
+
+    <div class="math-formula">
+        $$ s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \overline{X})^2 $$
+    </div>
+
+    <p class="paragraph">
+        Variance is a crucial component in understanding the dispersion or variability within a data set. A larger variance indicates that the data points are more spread out from the mean, while a smaller variance indicates that the data points are closer to the mean.
+    </p>
+
+    <p class="paragraph">
+        Both the mean and variance are fundamental in inferential statistics, where they are used to make predictions about a population based on a sample. Furthermore, the distribution of the sample mean and sample variance follows well-defined patterns, with the sample mean following a normal distribution (by the Central Limit Theorem) and the sample variance following a chi-squared distribution.
+    </p>
+
+    <!-- Section 2: Lebesgue-Stieltjes Integration -->
+    <h2 class="section-title">Lebesgue–Stieltjes Integration</h2>
+    <p class="paragraph">
+        The Lebesgue-Stieltjes integral extends the concept of integration beyond the classical Riemann integral. It allows for integration with respect to a general measure \( F(x) \), which is typically the cumulative distribution function (CDF) of a random variable. The integral is written as:
+    </p>
+
+    <div class="math-formula">
+        $$ \int_a^b f(x) \, dF(x) $$
+    </div>
+
+    <p class="paragraph">
+        This form of integration is particularly useful in probability theory and measure theory because it accommodates a broader range of functions and distributions, especially those that are not easily handled by Riemann integration. In probability theory, the measure \( F(x) \) typically represents the CDF of a random variable, and the Lebesgue-Stieltjes integral allows us to calculate important quantities such as expectations and variances.
+    </p>
+
+    <p class="paragraph">
+        For example, the expectation of a random variable \( X \), given its CDF \( F(x) \), can be expressed as:
+    </p>
+
+    <div class="math-formula">
+        $$ \mathbb{E}[X] = \int_{-\infty}^{\infty} x \, dF(x) $$
+    </div>
+
+    <p class="paragraph">
+        This integral is particularly advantageous because it allows the handling of both discrete and continuous distributions. For a discrete random variable, the CDF is a step function, and the integral can be interpreted as a sum over the discrete points. For continuous random variables, the integral becomes an integral with respect to the CDF, similar to the standard expectation formula.
+    </p>
+
+    <!-- Section 3: Applications to Probability and Measure Theory -->
+    <h2 class="section-title">Applications to Probability Theory and Measure Theory</h2>
+    <p class="paragraph">
+        In probability theory, the Lebesgue-Stieltjes integral provides a unified framework for handling the expectation of random variables. It is especially useful when the random variable has a distribution that cannot be described by a simple probability density function (PDF). For example, in the case of mixed distributions, where both continuous and discrete components exist, the Lebesgue-Stieltjes integral provides a natural method for computing expected values and variances.
+    </p>
+</div>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

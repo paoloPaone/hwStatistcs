@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSL/TLS Certificate Analysis</title>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="button-styles.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        .container-custom {
+            margin-top: 40px;
+        }
+
+        .carousel img {
+            max-height: 500px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card {
+            border-radius: 15px;
+            background-color: #343a40;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #444;
+            border-radius: 15px 15px 0 0;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .card-body pre {
+            background-color: #2c2f34;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: white;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            display: none;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+            text-decoration: none;
+            transition: background-color 0.3s, border 0.3s;
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .home-btn:hover {
+            background-color: transparent; /* Make the background transparent on hover */
+            border: 2px solid #007bff; /* Blue border on hover */
+            color: #007bff; /* Change text color to blue on hover */
+        }
+
+        .home-btn i {
+            margin-right: 0;
+        }
+
+        .home-btn:hover i {
+            color: #007bff;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Button container for Back to Home -->
+        <button id="backHomeBtn" class="btn home-btn">
+            <i class="fas fa-home"></i> Back to Home
+        </button>
+    </div>
+     <!-- JavaScript to handle button click -->
+        <script>
+            document.getElementById('backHomeBtn').addEventListener('click', function() {
+                window.location.href = 'index.html'; // Change 'index.html' to your homepage URL
+            });
+        </script>
+
+    <!-- Container Descriptive Section -->
+    <div class="container container-custom">
+        <h1 style="text-align: center;">SSL/TLS Certificate Analysis</h1>
+        <p style="font-size: 18px;">
+            This application offers a comprehensive and in-depth analysis of SSL/TLS certificates, designed to help users understand the security characteristics of various domains. By leveraging a public API, specifically <span style="color: #007bff ; font-weight: bold;">crt.sh</span>, the app retrieves SSL/TLS certificate data and parses it for further statistical processing. The process is divided into multiple stages, ensuring a thorough examination.
+        </p>
+
+        <p style="font-size: 18px;">
+            Initially, certificates are retrieved asynchronously from the API, with each certificate being deserialized into an object for further analysis. This step ensures that data from multiple domains can be fetched and processed efficiently. The application then performs detailed analyses on key certificate metrics, including the validity duration, hash algorithms used, and the distribution of issuers.
+        </p>
+        
+            
+        <p style="font-size: 18px;">
+            In this example, the domains <span style="color: #007bff; font-weight: bold;">microsoft.com</span>, 
+    <span style="color: #007bff; font-weight: bold;">mozilla.org</span>, and 
+    <span style="color: #007bff; font-weight: bold;">apple.com</span> were chosen to demonstrate the certificate analysis. 
+    These domain names serve as practical examples to showcase how SSL/TLS certificates can vary across major organizations.
+        </p>
+    </div>
+
+    <!-- Image Section -->
+    <div class="container container-custom">
+        <h2 style="text-align: center;">Certificate Analysis Visualization</h2>
+
+        <img src="opthw10.png" alt="SSL Certificate Analysis" class="img-fluid">
+        
+    
+
+    </div>
+
+    <!-- Cards Section -->
+    <div class="container container-custom">
+        <!-- Card 1: Fetch Certificates -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-download"></i> Fetching Certificates
+            </div>
+            <div class="card-body">
+                <p>
+                    The following code snippet demonstrates how the application fetches certificate information
+                    for a specified domain, processes the HTTP response, and deserializes the data into objects for further
+                    analysis.
+                </p>
+                <pre id="fetchCertificatesCode">
+private async System.Threading.Tasks.Task&lt;List&lt;Certificate&gt;&gt; FetchCertificatesAsync(string domain)
+{
+    using (HttpClient client = new HttpClient())
+    {
+        try
+        {
+            string url = string.Format(API_ENDPOINT, domain);
+            var response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            Debug.WriteLine("DEBUG: Response for domain " + domain + ":\n" + responseBody);
+
+            var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            return JsonSerializer.Deserialize&lt;List&lt;Certificate&gt;&gt;(responseBody, options);
+        }
+        catch (Exception ex)
+        {
+            resultsRichTextBox.AppendText($"Error fetching data for {domain}: {ex.Message}\n");
+            return new List&lt;Certificate&gt;();
+        }
+    }
+}
+                </pre>
+                <button class="btn btn-custom" onclick="toggleCode('fetchCertificates')">Show Code</button>
+            </div>
+        </div>
+
+        <!-- Card 2: Validity Duration Analysis -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-calendar-alt"></i> Validity Duration Analysis
+            </div>
+            <div class="card-body">
+                <p>
+                    Once certificates are retrieved, their validity periods are analyzed. The code calculates both the
+                    mean and median validity durations and classifies certificates based on intervals in years. This
+                    analysis allows for a deeper understanding of certificate validity trends over time.
+                </p>
+                <pre id="validityAnalysisCode">
+private void PerformAndDisplayAnalysis(List&lt;Certificate&gt; certificates)
+{
+    var validities = certificates.Select(c =&gt; (c.Not_after - c.Not_before).TotalDays).ToList();
+    double meanValidity = validities.Average();
+    double medianValidity = validities.OrderBy(v =&gt; v).ElementAt(validities.Count / 2);
+
+    var validityYears = certificates.Select(c =&gt; (c.Not_after - c.Not_before).TotalDays / 365.0).ToList();
+    var validityDistribution = validityYears
+        .GroupBy(v =&gt; (int)Math.Ceiling(v))  // Round and group by year intervals
+        .Select(g =&gt; new { Years = g.Key, Count = g.Count() })
+        .OrderBy(g =&gt; g.Years)
+        .ToList();
+
+    resultsRichTextBox.Clear();
+    resultsRichTextBox.AppendText($"Mean Validity Duration: {meanValidity:F2} days{Environment.NewLine}");
+    resultsRichTextBox.AppendText($"Median Validity Duration: {medianValidity:F2} days{Environment.NewLine}");
+}
+                </pre>
+                <button class="btn btn-custom" onclick="toggleCode('validityAnalysis')">Show Code</button>
+            </div>
+        </div>
+
+        <!-- Card 3: Hashing Algorithm Analysis -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-cogs"></i> Hashing Algorithm Analysis
+            </div>
+            <div class="card-body">
+                <p>
+                    This section focuses on analyzing the distribution of hashing algorithms used in the SSL/TLS certificates.
+                    The code below helps to classify certificates based on the hashing algorithm employed, providing insights
+                    into trends and differences.
+                </p>
+                <pre id="hashingAlgorithmAnalysisCode">
+private string GetHashingAlgorithm(Certificate certificate)
+{
+    if (certificate.Issuer_name.Contains("SHA256", StringComparison.OrdinalIgnoreCase))
+        return "SHA-256";
+    if (certificate.Issuer_name.Contains("SHA1", StringComparison.OrdinalIgnoreCase))
+        return "SHA-1";
+    if (certificate.Issuer_name.Contains("SHA2", StringComparison.OrdinalIgnoreCase))
+        return "SHA-2";
+    if (certificate.Issuer_name.Contains("SHA512", StringComparison.OrdinalIgnoreCase))
+        return "SHA-512";
+
+    return "Unknown";
+}
+                </pre>
+                <button class="btn btn-custom" onclick="toggleCode('hashingAlgorithmAnalysis')">Show Code</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleCode(id) {
+            const codeBlock = document.getElementById(`${id}Code`);
+            codeBlock.style.display = codeBlock.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
