@@ -261,7 +261,39 @@ private string GetHashingAlgorithm(Certificate certificate)
             </div>
         </div>
 
+        <!-- Card 4: Security Risks in SSL/TLS Certificates -->
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-exclamation-triangle"></i> Security Risks in SSL/TLS Certificates
     </div>
+    <div class="card-body">
+        <p>
+            The statistical analysis of SSL/TLS certificates identifies several potential security risks:
+        </p>
+        <ul>
+            <li>
+                <strong>Weak Hashing Algorithms:</strong> Use of outdated algorithms like SHA-1 can lead to vulnerabilities such as collisions, compromising data integrity.
+            </li>
+            <li>
+                <strong>Inadequate Key Length:</strong> Keys shorter than 2048 bits or improperly configured cryptographic schemes may be susceptible to advanced attacks.
+            </li>
+            <li>
+                <strong>Extended Certificate Validity:</strong> Certificates with long validity periods increase the risk of private key compromise over time.
+            </li>
+            <li>
+                <strong>Untrusted Certificate Authorities (CAs):</strong> Certificates issued by compromised or untrustworthy CAs can facilitate man-in-the-middle attacks.
+            </li>
+            <li>
+                <strong>Short-Lived Certificates:</strong> Certificates with very short validity periods may cause disruptions if not renewed promptly.
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+    </div>
+
+
 
     <script>
         function toggleCode(id) {
